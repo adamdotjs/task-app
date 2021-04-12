@@ -1,0 +1,249 @@
+:root {
+  --white: hsl(100, 0%, 100%);
+  --gray-900: hsl(100, 0%, 90%);
+  --gray-800: hsl(100, 0%, 80%);
+  --gray-700: hsl(100, 0%, 70%);
+  --gray-600: hsl(100, 0%, 60%);
+  --gray-500: hsl(100, 0%, 50%);
+  --gray-400: hsl(100, 0%, 40%);
+  --gray-300: hsl(100, 0%, 30%);
+  --gray-200: hsl(100, 0%, 20%);
+  --gray-100: hsl(100, 0%, 10%);
+  --black: hsl(100, 0%, 0%);
+}
+
+/* GLOBAL STYLES */
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 62.5%;
+}
+
+body {
+  min-height: 100vh;
+  font-family: sans-serif;
+  font-size: 1.6rem;
+  line-height: 1.4;
+  padding: 5vh 5vw;
+}
+
+h1 {
+  font-size: 5rem;
+  font-weight: 900;
+  letter-spacing: -0.07em;
+
+  &::after {
+    display: block;
+    content: "";
+    height: 2px;
+    width: 100%;
+    background: var(--white);
+    margin-top: 1rem;
+  }
+}
+
+h2 {
+  font-size: 3.75rem;
+  letter-spacing: -0.05em;
+}
+
+h1,
+h2 {
+  line-height: 1.1;
+}
+
+button,
+input,
+select {
+  border: 2px solid var(--black);
+  background: var(--white);
+  padding: 1rem;
+  font: inherit;
+  width: 100%;
+
+  @media (min-width: 600px) {
+    width: auto;
+  }
+}
+
+input,
+select {
+  line-height: inherit;
+  margin: 0.25rem 0 1rem 0;
+}
+
+label {
+  display: block;
+}
+
+button {
+  cursor: pointer;
+  background-color: var(--black);
+  color: var(--white);
+  position: relative;
+  transition: background 200ms cubic-bezier(0.39, 0.575, 0.565, 1);
+}
+
+button:hover {
+  background: var(--gray-300);
+}
+
+i {
+  font-size: 1.8rem;
+  color: currentColor;
+  pointer-events: none;
+}
+
+.flow > * + * {
+  --flow-space: 4rem;
+
+  margin-top: var(--flow-space);
+}
+
+/* MAIN APP STYLING */
+.task-container {
+  max-width: 700px;
+  min-height: 800px;
+  background: var(--gray-800);
+  margin: auto;
+  padding: 3rem;
+  border: 8px solid var(--black);
+}
+
+.task-container,
+.task-list {
+  display: flex;
+  flex-direction: column;
+}
+
+.task-input {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+.form-field {
+  margin-bottom: 1rem;
+  width: 100%;
+
+  @media (min-width: 600px) {
+    width: auto;
+  }
+}
+
+.task-list {
+  margin-bottom: 3em;
+}
+
+.task-item {
+  background: var(--white);
+  display: block;
+  align-items: center;
+  justify-content: space-between;
+  padding: 3rem 2rem;
+  margin: 0.75rem 0;
+
+  p {
+    font-size: 1.8rem;
+    margin-inline-end: 1em;
+    word-break: break-word;
+  }
+
+  .date {
+    font-size: 1.2rem;
+    margin-top: 0.5rem;
+    color: var(--gray-400);
+  }
+
+  @media (min-width: 600px) {
+    display: flex;
+  }
+}
+
+.task-actions {
+  --flow-space: 1rem;
+  display: flex;
+  align-items: flex-start;
+
+  & button {
+    background: var(--white);
+    color: var(--black);
+    transition: background 200ms cubic-bezier(0.39, 0.575, 0.565, 1);
+
+    &:hover {
+      background: var(--black);
+      color: var(--white);
+    }
+  }
+
+  & button + button {
+    margin-left: 0.5rem;
+  }
+}
+
+/* STATUS STYLING */
+.editable {
+  font-style: italic;
+  border: 1px solid currentColor;
+}
+
+.priority {
+  outline: 4px dashed var(--black);
+  outline-offset: -4px;
+  order: -1;
+
+  & .item {
+    font-weight: bold;
+  }
+
+  & .item::before {
+    content: "!";
+    display: inline-flex;
+    background: var(--black);
+    border-radius: 50%;
+    margin-right: 1rem;
+    width: 2.5rem;
+    height: 2.5rem;
+    justify-content: center;
+    align-items: center;
+    color: var(--white);
+  }
+}
+
+.priority .btn--priority,
+.editable {
+  background: var(--black);
+  color: var(--white);
+}
+
+.complete {
+  background: repeating-linear-gradient(
+    -45deg,
+    var(--gray-600),
+    var(--gray-600) 10px,
+    var(--white) 10px,
+    var(--white) 25px
+  );
+  order: 99;
+}
+
+.complete .btn--edit,
+.complete .btn--priority,
+.complete .btn--complete {
+  display: none;
+}
+
+.hidden {
+  display: none;
+}
+
+.btn--clear {
+  margin: 0;
+  margin-top: auto;
+}
