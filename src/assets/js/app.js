@@ -55,19 +55,19 @@ function renderTasks() {
     tasksContainer.innerHTML = tasks
       .map((task) => {
         return `
-		<li class="task-item flow ${task.status}" data-id="${task.id}">
-			<div>
-				<p class="item">${task.item}</p>
-				<p class="date">Created on ${task.date} at ${task.time}</p>
-			</div>
-			<div class="task-actions">
-				<button class="btn--delete"><i class="far fa-trash-alt"></i></button>
-				<button class="btn--complete"><i class="fas fa-check"></i></button>
-				<button class="btn--edit"><i class="fas fa-edit"></i></button>
-				<button class="btn--priority"><i class="fas fa-exclamation"></i></button>
-			</div>
-		</li>
-	`;
+        <li class="task-item flow ${task.status}" data-id="${task.id}">
+          <div>
+            <p class="item">${task.item}</p>
+            <p class="date">Created on ${task.date} at ${task.time}</p>
+          </div>
+          <div class="task-actions">
+            <button class="btn--delete"><i class="far fa-trash-alt"></i></button>
+            <button class="btn--complete"><i class="fas fa-check"></i></button>
+            <button class="btn--edit"><i class="fas fa-edit"></i></button>
+            <button class="btn--priority"><i class="fas fa-exclamation"></i></button>
+          </div>
+        </li>
+      `;
       })
       .join("");
   }
